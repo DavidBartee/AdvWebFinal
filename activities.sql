@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 10:30 PM
+-- Generation Time: Apr 18, 2019 at 02:32 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -31,23 +31,46 @@ SET time_zone = "+00:00";
 CREATE TABLE `activity` (
   `activityID` bigint(20) UNSIGNED NOT NULL,
   `name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `address` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `activityType` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_520_ci
+  `street` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_520_ci,
+  `state` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `city` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `postal` text COLLATE utf8mb4_unicode_520_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `activity`
 --
 
-INSERT INTO `activity` (`activityID`, `name`, `address`, `activityType`, `description`) VALUES
-(1, 'McAuliffe-Shepard Discovery Center', '2 Institute Dr, Concord, NH 03301', 'Museums and Parks', 'The McAuliffe-Shepard Discovery Center is a museum of Earth and space science featuring interactive exhibits, an observatory, and a planetarium theater.'),
-(2, 'Regal Cinemas Concord 10', '282 Loudon Rd, Concord, NH 03301', 'Entertainment', 'Movie theater in Concord with comfortable seats and a small arcade.'),
-(3, 'Escape Room Concord NH', '240 Airport Rd, Concord, NH 03301', 'Interactive', '\'Escape Rooms\' are games in which a small group of people are \'locked\' in a room and must find clues, solve puzzles, and solve riddles to escape the room. Note that the entrance doors are never locked, in case players need to leave to use the restroom or any other reason.'),
-(4, 'Capitol Center for the Arts', '44 South Main St, Concord, NH 03301', 'Entertainment', 'A non-profit performing arts theater that is home to The Chubb Theatre, The Spotlight Café and a large function room called The Governor\'s Hall. Performances can include broadway shows, pop and country stars, and dance performances.'),
-(5, 'NH Audubon McLane Center', '84 Silk Farm Rd, Concord, NH 03301', 'Museums and Parks', 'A wildlife refuge that is home to the Silk Farm Sanctuary, which has three wooded hiking trails. The facility also has indoor animal displays and an exhibit.'),
-(6, 'New Hampshire Historical Society', '30 Park St, Concord, NH 03301', 'Museums and Parks', 'A nonprofit organization that has been preserving New Hampshire\'s history since 1823.'),
-(7, 'Concord Craft Brewing Company', '117 Storrs St, Concord, NH 03301', 'Interactive', 'A small batch craft brewery in downtown Concord with a beer store, tasting room, brewery tour, and gift shop.');
+INSERT INTO `activity` (`activityID`, `name`, `street`, `description`, `state`, `city`, `postal`) VALUES
+(1, 'McAuliffe-Shepard Discovery Center', '2 Institute Dr', 'The McAuliffe-Shepard Discovery Center is a museum of Earth and space science featuring interactive exhibits, an observatory, and a planetarium theater.', 'NH', 'Concord', '03301'),
+(2, 'Regal Cinemas Concord 10', '282 Loudon Rd', 'Movie theater in Concord with comfortable seats and a small arcade.', 'NH', 'Concord', '03301'),
+(3, 'Escape Room Concord NH', '240 Airport Rd', '\'Escape Rooms\' are games in which a small group of people are \'locked\' in a room and must find clues, solve puzzles, and solve riddles to escape the room. Note that the entrance doors are never locked, in case players need to leave to use the restroom or any other reason.', 'NH', 'Concord', '03301'),
+(4, 'Capitol Center for the Arts', '44 South Main St', 'A non-profit performing arts theater that is home to The Chubb Theatre, The Spotlight Café and a large function room called The Governor\'s Hall. Performances can include broadway shows, pop and country stars, and dance performances.', 'NH', 'Concord', '03301'),
+(5, 'NH Audubon McLane Center', '84 Silk Farm Rd', 'A wildlife refuge that is home to the Silk Farm Sanctuary, which has three wooded hiking trails. The facility also has indoor animal displays and an exhibit.', 'NH', 'Concord', '03301'),
+(6, 'New Hampshire Historical Society', '30 Park St', 'A nonprofit organization that has been preserving New Hampshire\'s history since 1823.', 'NH', 'Concord', '03301'),
+(7, 'Concord Craft Brewing Company', '117 Storrs St', 'A small batch craft brewery in downtown Concord with a beer store, tasting room, brewery tour, and gift shop.', 'NH', 'Concord', '03301');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activitytype`
+--
+
+CREATE TABLE `activitytype` (
+  `typeID` bigint(20) UNSIGNED NOT NULL,
+  `typeName` text COLLATE utf8mb4_unicode_520_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Dumping data for table `activitytype`
+--
+
+INSERT INTO `activitytype` (`typeID`, `typeName`) VALUES
+(1, 'Museums'),
+(2, 'Parks'),
+(3, 'Entertainment'),
+(4, 'Interactive');
 
 -- --------------------------------------------------------
 
@@ -75,6 +98,17 @@ INSERT INTO `image` (`imageID`, `activityID`, `filePath`, `altText`) VALUES
 (6, 6, 'http://www.hlturner.com/images/NHHistoricalSociety.jpg', 'The front of the New Hampshire Historical Society building.'),
 (7, 7, 'https://media-cdn.tripadvisor.com/media/photo-s/0e/6f/c4/4a/storefront.jpg', 'The front side of the Concord Craft Brewing Company Building, with the sign in-view.');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `typeassoc`
+--
+
+CREATE TABLE `typeassoc` (
+  `activityID` bigint(20) NOT NULL,
+  `typeID` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -84,7 +118,14 @@ INSERT INTO `image` (`imageID`, `activityID`, `filePath`, `altText`) VALUES
 --
 ALTER TABLE `activity`
   ADD PRIMARY KEY (`activityID`),
-  ADD UNIQUE KEY `attractionID` (`activityID`);
+  ADD UNIQUE KEY `activityID` (`activityID`) USING BTREE;
+
+--
+-- Indexes for table `activitytype`
+--
+ALTER TABLE `activitytype`
+  ADD PRIMARY KEY (`typeID`),
+  ADD UNIQUE KEY `typeID` (`typeID`);
 
 --
 -- Indexes for table `image`
@@ -95,6 +136,12 @@ ALTER TABLE `image`
   ADD KEY `image_activity` (`activityID`) USING BTREE;
 
 --
+-- Indexes for table `typeassoc`
+--
+ALTER TABLE `typeassoc`
+  ADD PRIMARY KEY (`activityID`,`typeID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -103,6 +150,12 @@ ALTER TABLE `image`
 --
 ALTER TABLE `activity`
   MODIFY `activityID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `activitytype`
+--
+ALTER TABLE `activitytype`
+  MODIFY `typeID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `image`

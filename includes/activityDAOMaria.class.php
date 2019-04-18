@@ -13,7 +13,7 @@
             $activities;
 
             while ($row = $statement->fetch()) {
-                $activities[$row['activityID']] = new Activity ($row['activityID'], $row['name'], $row['address'], $row['activityType'], $row['description']);
+                $activities[$row['activityID']] = new Activity ($row['activityID'], $row['name'], $row['street'], $row['state'], $row['city'], $row['description'], $row['postal']);
             }
 
             $statement = $this->pdo->prepare('SELECT * FROM image');
@@ -28,6 +28,18 @@
             }
 
             return $activities;
+        }
+
+        public function getActivityTypes () {
+            $statement = $this->pdo->prepare('SELECT * FROM activityType');
+            $statement->execute();
+            $types;
+
+            while ($row = $statement->fetch()) {
+                $types[$row['typeID']] = $row['typeName'];
+            }
+
+            return $types;
         }
     }
 ?>

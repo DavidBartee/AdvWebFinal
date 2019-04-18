@@ -13,6 +13,8 @@ function resetSession() {
 
 $activities;
 $images;
+$types;
+
 $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $actDAO = new ActivityDAOMaria($pdo);
@@ -27,7 +29,18 @@ function getActivities () {
     }
 }
 
+function getTypes () {
+    global $actDAO;
+    global $pdo;
+    try {
+        return $actDAO->getActivityTypes($pdo);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 $activities = getActivities();
+$types = getTypes();
 
 ?>
 
@@ -73,7 +86,7 @@ $activities = getActivities();
                         echo '<div class="activity-box">
                             <h2>' . $activities[$useID]->name . '</h2>
                             <img src="' . $activities[$useID]->images[0]->filePath . '" alt="' . $activities[$useID]->images[0]->altText . '"/>
-                            <h3>Location: ' . $activities[$useID]->address . '</h3>
+                            <h3>Location: ' . $activities[$useID]->street . ', ' . $activities[$useID]->city . ', ' . $activities[$useID]->state . ' ' . $activities[$useID]->postal . '</h3>
                             <p>' . $activities[$useID]->description . '</p>';
                         if ($foundSession) {
                             echo '<button id="sessionReset">Reset Session Data</button>
