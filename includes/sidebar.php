@@ -20,7 +20,6 @@
     <ul>
         <?php
             
-
             //$allTypes = NULL;
             foreach ($activities as $value) {
                 if ($allTypes == NULL || !in_array($value->activityType, $allTypes)) {
