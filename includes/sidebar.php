@@ -3,8 +3,14 @@
         return strcmp($a->name, $b->name);
     }
 
+    function compareTypes ($a, $b) {
+        return strcmp($a, $b);
+    }
+
     $alphabetical = $activities;
     usort($alphabetical, "compareActivities");
+    $allTypes = $types;
+    usort($allTypes, "compareTypes");
 ?>
 
 <div class="sidebar">
@@ -14,8 +20,7 @@
     <ul>
         <?php
             
-
-            $allTypes = NULL;
+            //$allTypes = NULL;
             foreach ($activities as $value) {
                 if ($allTypes == NULL || !in_array($value->activityType, $allTypes)) {
                     $allTypes[] = $value->activityType;

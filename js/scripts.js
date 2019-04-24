@@ -13,6 +13,14 @@ function enlargeSidebar () {
     }
 }
 
+function sortActivities() {
+
+}
+
+function filterActivities() {
+
+}
+
 $(document).ready(function() {
     interval = setInterval(enlargeSidebar, 50);
 });
