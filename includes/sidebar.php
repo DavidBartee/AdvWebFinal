@@ -15,30 +15,33 @@
 
 <div class="sidebar">
     <h1>Concord Attractions</h1>
+    <div class="dropdown" style="float:left;">
+        <button class="dropbtn">Categories</button>
+        <div class="dropdown-content" style="left:0;">
+            <?php
 
-    <h2>Browse by Category</h2>
-    <ul>
-        <?php
-            
-            //$allTypes = NULL;
             foreach ($activities as $value) {
                 if ($allTypes == NULL || !in_array($value->activityType, $allTypes)) {
                     $allTypes[] = $value->activityType;
                 }
             }
             foreach ($allTypes as $value) {
-                echo '<li><a href="midterm.php?activityType=' . $value . '">' . $value . '</a></li>';
+                echo '<a href="midterm.php?activityType=' . $value . '">' . $value . '</a>';
             }
-        ?>
-    </ul>
+            ?>
+        </div>
 
-    <h2>Browse by attraction</h2>
-    <ul>
-        <li><a href="midterm.php">Home</a></li>
-        <?php
+    </div>
+    <div class="dropdown" style="float:left;">
+        <button class="dropbtn">Attractions</button>
+        <div class="dropdown-content" style="left:0;">
+            <?php
             foreach ($alphabetical as $value) {
-                echo '<li><a href="midterm.php?activity=' . $value->id . '">' . $value->name . '</a></li>';
+                echo '<a href="midterm.php?activity=' . $value->id . '">' . $value->name . '</a>';
             }
-        ?>
-    </ul>
+            ?>
+        </div>
+
+    </div>
 </div>
+
