@@ -41,5 +41,9 @@
 
             return $types;
         }
+
+        public function updateActivity ($id) {
+            
+        }
     }
 ?>
