@@ -60,7 +60,8 @@
         array_push($imagesArray, [
             'id' => $value->id,
             'altText' => $value->altText,
-            'filePath' => $value->filePath
+            'filePath' => $value->filePath,
+            'activityID' => $value->activityID
         ]);
     }
     if (isset($_GET['infoType']) && $_GET['infoType'] != NULL) {

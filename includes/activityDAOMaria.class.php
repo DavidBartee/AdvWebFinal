@@ -20,7 +20,7 @@
             $statement->execute();
 
             while ($row = $statement->fetch()) {
-                $images[$row['activityID']][] = new Image ($row['imageID'], $row['altText'], $row['filePath']);
+                $images[$row['activityID']][] = new Image ($row['imageID'], $row['altText'], $row['filePath'], $row['activityID']);
             }
             
             foreach ($images as $key => $value) {
