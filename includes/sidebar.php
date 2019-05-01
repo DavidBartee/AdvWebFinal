@@ -21,6 +21,9 @@
 
     <div id="dropDownBars">
 
+        <div class="dropdown">
+            <button class="dropbtn"><a style="text-decoration:none; color: white" href="midterm.php">Home Page</a></button>
+        </div>
 
         <div class="dropdown">
             <button class="dropbtn">Categories</button>

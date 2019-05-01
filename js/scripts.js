@@ -69,6 +69,7 @@ $(function () {
             success: function (JSONObject) {
                 var activityHTML = "";
 
+
                 //loop through object
                 for(var key in JSONObject) {
                     if (JSONObject.hasOwnProperty(key)) {
@@ -96,7 +97,7 @@ $(function () {
             data: {
                 "otherWebServerDropDown": $('#otherWebServerDropDown').val()
             },
-            url: "http://AdvWebFinal/webservice.php?infoType=activity",
+            //url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = '';
@@ -116,6 +117,10 @@ $(function () {
         });
     });
 });
+
+
+//activities display
+
 
 
 
