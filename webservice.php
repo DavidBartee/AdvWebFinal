@@ -8,6 +8,8 @@
     $activities;
     $images;
     $types;
+
+    header('Content-type: application/json');
     
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

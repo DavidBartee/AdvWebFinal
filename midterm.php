@@ -49,14 +49,17 @@ $types = getTypes();
 
 <head>
     <title>Concord Attractions</title>
-    <link rel="stylesheet" href="css/styles.css">
+<!--    <link rel="stylesheet" href="css/styles.css">-->
+    <link rel="stylesheet" href="css/styles2.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scripts.js"></script>
 </head>
 
 <body>
 <?php include 'includes/sidebar.php'; ?>
+
     <div class="container">
+
         
 
         <?php
