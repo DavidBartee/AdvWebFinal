@@ -61,6 +61,16 @@ $types = getTypes();
 <!--    async activity display-->
     <div class="container" id="activityDisplay">
         <script>
+            let activityIsset = '';
+            let activityGet = '';
+            activityIsset = <?php echo (isset($_GET['activity']));?>;
+            activityGet = <?php echo $_GET['activity']; ?>;
+
+            displayActivity(activityIsset, activityGet);
+            // $(function () {
+            //     displayActivity(activityIsset, activityGet);
+            // });
+
             $(function () {
                 //image ajax call
                 var imageData = '';
@@ -81,18 +91,13 @@ $types = getTypes();
                             for(var key in JSONObject) {
                                 if (JSONObject.hasOwnProperty(key)) {
 
-                                    if (<?php echo (isset($_GET['activity']));?>){
-                                        //alert(JSONObject[key]["name"]);
-                                    }
-
-                                    if (JSONObject[key]["id"] == <?php echo $_GET['activity']; ?>) {
-                                        imageData = '<img src="' + JSONObject[key]["filePath"] + '" alt="' + JSONObject[key]["altText"] + '"/>';
+                                    if (activityIsset){
+                                        if (JSONObject[key]["id"] == activityGet) {
+                                            imageData = '<img src="' + JSONObject[key]["filePath"] + '" alt="' + JSONObject[key]["altText"] + '"/>';
+                                        }
                                     }
                                 }
                             }
-
-                            //insert activity into html
-                            //$('#activityDisplay').html(activityHTML);
                         }
                     });
                 });
@@ -114,19 +119,17 @@ $types = getTypes();
                             for(var key in JSONObject) {
                                 if (JSONObject.hasOwnProperty(key)) {
 
-                                    if (<?php echo (isset($_GET['activity']));?>){
-                                        //alert(JSONObject[key]["name"]);
-                                    }
-
-                                    if (JSONObject[key]["id"] == <?php echo $_GET['activity']; ?>) {
-                                        //activityHTML += '<p>' + JSONObject[key]["name"] + '</p>';
-                                        activityHTML += '<div class="activity-box">';
-                                        activityHTML += '<h2>' + JSONObject[key]["name"] + '</h2>';
-                                        activityHTML += imageData; //image
-                                        activityHTML += '<h3 style="background-color: white">Location: ' + JSONObject[key]["street"] + ', ' + JSONObject[key]["city"] + ', ' + JSONObject[key]["state"] + ', ' + JSONObject[key]["postal"] + '</h3>';
-                                        activityHTML += '<p style="background: white">' + JSONObject[key]["description"] + '</p>';
-                                        activityHTML += ''; //session button
-                                        activityHTML += '</div>';
+                                    if (activityIsset){
+                                        if (JSONObject[key]["id"] == activityGet) {
+                                            //activityHTML += '<p>' + JSONObject[key]["name"] + '</p>';
+                                            activityHTML += '<div class="activity-box">';
+                                            activityHTML += '<h2>' + JSONObject[key]["name"] + '</h2>';
+                                            activityHTML += imageData; //image
+                                            activityHTML += '<h3 style="background-color: white">Location: ' + JSONObject[key]["street"] + ', ' + JSONObject[key]["city"] + ', ' + JSONObject[key]["state"] + ', ' + JSONObject[key]["postal"] + '</h3>';
+                                            activityHTML += '<p style="background: white">' + JSONObject[key]["description"] + '</p>';
+                                            activityHTML += ''; //session button
+                                            activityHTML += '</div>';
+                                        }
                                     }
                                 }
                             }
