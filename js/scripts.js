@@ -64,7 +64,7 @@ $(function () {
             data: {
                 "ourWebServerDropDown": $('#ourWebServerDropDown').val()
             },
-            url: "http://localhost/IST240/AdvWebFinal/webservice.php?infoType=activity",
+            url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = "";
@@ -96,7 +96,7 @@ $(function () {
             data: {
                 "otherWebServerDropDown": $('#otherWebServerDropDown').val()
             },
-            //url: "http://localhost/IST240/AdvWebFinal/webservice.php?infoType=activity",
+            url: "http://AdvWebFinal/webservice.php?infoType=activity",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = '';
