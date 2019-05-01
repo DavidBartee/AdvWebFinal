@@ -49,6 +49,7 @@ $types = getTypes();
 
 <head>
     <title>Concord Attractions</title>
+<!--    <link rel="stylesheet" href="css/styles.css">-->
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scripts.js"></script>
@@ -56,7 +57,91 @@ $types = getTypes();
 
 <body>
 <?php include 'includes/sidebar.php'; ?>
+
+<!--    async activity display-->
+    <div class="container" id="activityDisplay">
+        <script>
+            $(function () {
+                //image ajax call
+                var imageData = '';
+
+                $(document).ready(function() {
+                    $.ajax({
+                        type: "GET",
+                        data: {
+                            "activityDisplay": $('#activityDisplay').val()
+                        },
+                        url: "http://localhost/AdvWebFinal/webservice.php?infoType=image",
+                        dataType: "json",
+                        success: function (JSONObject) {
+                            var activityHTML = "";
+
+
+                            //loop through object
+                            for(var key in JSONObject) {
+                                if (JSONObject.hasOwnProperty(key)) {
+
+                                    if (<?php echo (isset($_GET['activity']));?>){
+                                        //alert(JSONObject[key]["name"]);
+                                    }
+
+                                    if (JSONObject[key]["id"] == <?php echo $_GET['activity']; ?>) {
+                                        imageData = '<img src="' + JSONObject[key]["filePath"] + '" alt="' + JSONObject[key]["altText"] + '"/>';
+                                    }
+                                }
+                            }
+
+                            //insert activity into html
+                            //$('#activityDisplay').html(activityHTML);
+                        }
+                    });
+                });
+
+                //activity ajax call
+                $(document).ready(function() {
+                    $.ajax({
+                        type: "GET",
+                        data: {
+                            "activityDisplay": $('#activityDisplay').val()
+                        },
+                        url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
+                        dataType: "json",
+                        success: function (JSONObject) {
+                            var activityHTML = "";
+
+
+                            //loop through object
+                            for(var key in JSONObject) {
+                                if (JSONObject.hasOwnProperty(key)) {
+
+                                    if (<?php echo (isset($_GET['activity']));?>){
+                                        //alert(JSONObject[key]["name"]);
+                                    }
+
+                                    if (JSONObject[key]["id"] == <?php echo $_GET['activity']; ?>) {
+                                        //activityHTML += '<p>' + JSONObject[key]["name"] + '</p>';
+                                        activityHTML += '<div class="activity-box">';
+                                        activityHTML += '<h2>' + JSONObject[key]["name"] + '</h2>';
+                                        activityHTML += imageData; //image
+                                        activityHTML += '<h3 style="background-color: white">Location: ' + JSONObject[key]["street"] + ', ' + JSONObject[key]["city"] + ', ' + JSONObject[key]["state"] + ', ' + JSONObject[key]["postal"] + '</h3>';
+                                        activityHTML += '<p style="background: white">' + JSONObject[key]["description"] + '</p>';
+                                        activityHTML += ''; //session button
+                                        activityHTML += '</div>';
+                                    }
+                                }
+                            }
+
+                            //insert activity into html
+                            $('#activityDisplay').html(activityHTML);
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+
     <div class="container">
+
         
 
         <?php
