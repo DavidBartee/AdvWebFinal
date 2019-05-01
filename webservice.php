@@ -10,6 +10,7 @@
     $types;
 
     header('Content-type: application/json');
+    header('Access-Control-Allow-Origins: *');
     
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
