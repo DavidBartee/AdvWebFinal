@@ -42,8 +42,12 @@
             return $types;
         }
 
-        public function updateActivity ($id) {
-            
+        public function updateActivity ($id, $object) {
+            //change to update statement right away
+            $statement = $this->pdo->prepare('SELECT * FROM activity
+                                                WHERE activityID == :id');
+            $statement->bindParam(':id', $id);
+            $statement->execute();
         }
     }
 ?>

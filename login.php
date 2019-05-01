@@ -9,11 +9,27 @@
     $db = new PDO(DBCONNSTRING,DBUSER,DBPASS);
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $myname = mysql_real_escape_string($_POST['username'], $db);
-        $mypassword = mysql_real_escape_string($_POST['password'], $db);
+        $myname = $_POST['username'];
+        $mypassword = $_POST['password'];
 
-        $sql = "SELECT id FROM user WHERE username = '$myname' and password_string = '$mypassword'";
-        $result = mysql_query($sql, $db);
+        $sql = $db->prepare("SELECT id FROM user WHERE username = :username and password_string = :password");
+        $sql->bindParam(':username', $myname);
+        $sql->bindParam(':password', $mypassword);
+        $sql->execute();
+
+        $result = $sql->fetchAll();
+        $count = 0;
+        foreach($result as $key => $value) {
+            echo 'key: ' . $key . '<br/>
+            value: ' . implode($value) . '<br/>';
+            $count++;
+        }
+            
+        if ($count == 1) {
+            header("location: management.php");
+        } else {
+            echo "Your login name or password is invalid";
+        }
     }
 ?>
 
