@@ -1,0 +1,36 @@
+body {
+    background-color: #ff944d;
+}
+
+div.readContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+div.readActivity {
+    border: 1px solid grey;
+    margin: 0;
+    height: auto;
+    width: 400px;
+}
+
+div.readActivity h2, div.readActivity p, div.readActivity h3 {
+    margin: 0;
+    padding: 8px;
+    word-wrap: break-word;
+}
+
+div.readActivity h2 {
+    background-color: #31c5ff;
+    color: white;
+}
+
+div.readActivity img {
+    max-height: 82%;
+    width: 100%;
+}
+
+div.readActivity form {
+    float: right;
+}

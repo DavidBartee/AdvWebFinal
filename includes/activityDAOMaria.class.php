@@ -41,5 +41,37 @@
 
             return $types;
         }
+
+        public function updateActivity ($object) {
+            $sql = 'UPDATE activity SET
+                name="' . $object->name . '",
+                street="' . $object->street . '",
+                description="' . $object->description . '",
+                state="' . $object->state . '",
+                city="' . $object->city . '",
+                postal=' . $object->postal . '
+                WHERE activityID = ' . $object->id;
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
+
+        public function createActivity ($object) {
+            $sql = 'INSERT INTO activity
+                        (name, street, description, state, city, postal)
+                        VALUES ("' . $object->name . '", "' .
+                        $object->street . '", "' .
+                        $object->description . '", "' .
+                        $object->state . '", "' .
+                        $object->city . '", "' .
+                        $object->postal . '")';
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
+
+        public function deleteActivity ($id) {
+            $sql = 'DELETE FROM activity WHERE activityID = ' . $id;
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
     }
 ?>
