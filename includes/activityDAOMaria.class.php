@@ -49,7 +49,7 @@
                 description="' . $object->description . '",
                 state="' . $object->state . '",
                 city="' . $object->city . '",
-                postal=' . $object->postal . '
+                postal="' . $object->postal . '"
                 WHERE activityID = ' . $object->id;
             $statement = $this->pdo->prepare($sql);
             $statement->execute();

@@ -5,8 +5,6 @@
     include_once('includes/activityDAO.class.php');
     include_once('includes/activityDAOMaria.class.php');
 
-    include 'includes/mgmt_header.php';
-
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $actDAO = new ActivityDAOMaria($pdo);
@@ -33,9 +31,11 @@
         $_POST['description'],
         $_POST['postal']);
         $actDAO->createActivity($newActivity);
+        resetAndReload();
     } else if (isset($_POST['submitDelete'])) {
         global $actDAO;
         $actDAO->deleteActivity($_POST['id']);
+        resetAndReload();
     } else if (isset($_POST['submitFinishedUpdate'])) {
         global $actDAO;
         $updatedActivity = new Activity ($_POST['id'],
@@ -46,7 +46,15 @@
         $_POST['description'],
         $_POST['postal']);
         $actDAO->updateActivity($updatedActivity);
+        resetAndReload();
     }
+
+    function resetAndReload () {
+        $_POST = array();
+        header('Location: management.php');        
+    }
+
+    include 'includes/mgmt_header.php';
 ?>
 
 <ul>
@@ -73,7 +81,7 @@
                     <input type="text" name="street" id="street" value="' . $toUpdate->street . '">
                     <br/>
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" value="' . $toUpdate->description . '">
+                    <textarea name="description" id="description" rows="12" cols="35">' . $toUpdate->description . '</textarea>
                     <br/>
                     <label for="state">State</label>
                     <input type="text" name="state" id="state" value="' . $toUpdate->state . '">
@@ -97,7 +105,7 @@
                     <input type="text" name="street" id="street">
                     <br/>
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description">
+                    <textarea name="description" id="description" rows="12" cols="35"></textarea>
                     <br/>
                     <label for="state">State</label>
                     <input type="text" name="state" id="state">
