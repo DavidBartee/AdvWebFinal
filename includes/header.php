@@ -22,10 +22,10 @@
     <div id="dropDownBars">
 
         <div class="dropdown">
-            <button class="dropbtn"><a style="text-decoration:none; color: white" href="midterm.php">Home Page</a></button>
+            <button class="dropbtn"><a style="text-decoration:none; color: white" href="index.php">Home Page</a></button>
         </div>
 
-        <div class="dropdown">
+        <!--<div class="dropdown">
             <button class="dropbtn">Categories</button>
             <div class="dropdown-content" style="left:0;">
                 <?php
@@ -36,18 +36,18 @@
                     }
                 }
                 foreach ($allTypes as $value) {
-                    echo '<a href="midterm.php?activityType=' . $value . '">' . $value . '</a>';
+                    echo '<a href="index.php?activityType=' . $value . '">' . $value . '</a>';
                 }
                 ?>
             </div>
 
-        </div>
+        </div>-->
         <div class="dropdown">
             <button class="dropbtn">Attractions</button>
             <div class="dropdown-content" style="left:0;">
                 <?php
                 foreach ($alphabetical as $value) {
-                    echo '<a href="midterm.php?activity=' . $value->id . '">' . $value->name . '</a>';
+                    echo '<a href="index.php?activity=' . $value->id . '">' . $value->name . '</a>';
                 }
                 ?>
             </div>

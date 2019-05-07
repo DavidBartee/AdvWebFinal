@@ -56,7 +56,7 @@ $types = getTypes();
 </head>
 
 <body>
-<?php include 'includes/sidebar.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <!--    async activity display-->
     <div class="container" id="activityDisplay">
@@ -145,7 +145,7 @@ $types = getTypes();
         
 
         <?php
-            if (isset($activities)) {
+            /*if (isset($activities)) {
                 $foundGet = FALSE;
                 if (isset($_GET['activity']) && $_GET['activity'] != NULL) {
                     $foundGet = TRUE;
@@ -194,7 +194,7 @@ $types = getTypes();
                         $useID = $value->id;
                         if ($value->activityType == $_GET['activityType']) {
                             echo '<div class="activity-box-small">
-                                    <a href="midterm.php?activity=' . $value->id . '">
+                                    <a href="index.php?activity=' . $value->id . '">
                                     
                                         <h2>' . $activities[$useID]->name . '</h2>
                                         <img src="' . $activities[$useID]->images[0]->filePath . '" alt="' . $activities[$useID]->images[0]->altText . '"/>
@@ -206,7 +206,7 @@ $types = getTypes();
                 } else {
 
                 }
-            }
+            }*/
         ?>
     </div>
 </body>

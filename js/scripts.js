@@ -42,7 +42,7 @@ $(function () {
 
                     var activity = data[i];
 
-                    var option = $('<a href="midterm.php?activity=' + activity.id + '">' + activity.name + '</a>');
+                    var option = $('<a href="index.php?activity=' + activity.id + '">' + activity.name + '</a>');
                     $("#webServerDropDown").append(option);
                 }
             })
@@ -73,7 +73,7 @@ $(function () {
                 //loop through object
                 for(var key in JSONObject) {
                     if (JSONObject.hasOwnProperty(key)) {
-                        activityHTML += '<a href="midterm.php?activity=';
+                        activityHTML += '<a href="index.php?activity=';
 
                         activityHTML += JSONObject[key]["id"] + '">';
                         activityHTML += JSONObject[key]["name"] + '</a>';
@@ -105,7 +105,7 @@ $(function () {
                 //loop through object
                 for(var key in JSONObject) {
                     if (JSONObject.hasOwnProperty(key)) {
-                        activityHTML += '<a href="midterm.php?activity=';
+                        activityHTML += '<a href="index.php?activity=';
                         activityHTML += JSONObject[key]["id"] + '">';
                         activityHTML += JSONObject[key]["name"] + '</a>';
                     }
