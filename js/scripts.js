@@ -179,6 +179,12 @@ $(function () {
                 var activityHTML = "";
 
 
+                JSONObject.sort(function(a, b){
+                    if(a.name < b.name) { return -1; }
+                    if(a.name > b.name) { return 1; }
+                    return 0;
+                });
+
                 //loop through object
                 for(var key in JSONObject) {
                     if (JSONObject.hasOwnProperty(key)) {
@@ -218,7 +224,7 @@ $(function () {
 
                     if (JSONObject.hasOwnProperty(key)) {
                         activityHTML += '<a href="midterm.php?activity=';
-                        activityHTML += i + '">';
+                        activityHTML += i++ + '">';
                         activityHTML += JSONObject[key]["Name"] + '</a>';
                     }
                 }
