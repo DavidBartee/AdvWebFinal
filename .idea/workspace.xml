@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b6ea7b0d-64a6-4e2c-866f-2b45c451fe38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/midterm.php" beforeDir="false" afterPath="$PROJECT_DIR$/midterm.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,14 +13,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44077134">
+    <splitter split-orientation="horizontal" split-proportion="0.35868627">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/scripts.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="3540">
-                  <caret line="236" selection-start-line="236" selection-end-line="236" />
+                  <caret line="239" selection-start-line="239" selection-end-line="239" />
                 </state>
               </provider>
             </entry>
@@ -27,8 +28,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/midterm.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="366">
-                  <caret line="55" selection-start-line="55" selection-end-line="55" />
+                <state relative-caret-position="140">
+                  <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#1978#2017#0#PHP" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -49,8 +53,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/scripts.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1196">
-                  <caret line="181" column="28" selection-start-line="181" selection-start-column="28" selection-end-line="181" selection-end-column="28" />
+                <state relative-caret-position="337">
+                  <caret line="217" selection-start-line="217" selection-end-line="217" />
                   <folding>
                     <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
@@ -89,7 +93,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="742" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -164,18 +168,19 @@
       <workItem from="1556672221055" duration="125000" />
       <workItem from="1556744649576" duration="9579000" />
       <workItem from="1557276641521" duration="213000" />
-      <workItem from="1557333049306" duration="331000" />
+      <workItem from="1557333049306" duration="1379000" />
+      <workItem from="1557341315279" duration="1278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10248000" />
+    <option name="totallyTimeSpent" value="12574000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="742" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1736672" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06542811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -227,14 +232,17 @@
     <entry file="file://$PROJECT_DIR$/js/scripts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3540">
-          <caret line="236" selection-start-line="236" selection-end-line="236" />
+          <caret line="239" selection-start-line="239" selection-end-line="239" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/midterm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="140">
+          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+          <folding>
+            <element signature="e#1978#2017#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

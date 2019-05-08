@@ -207,16 +207,19 @@ $(function () {
                 "otherWebServerDropDown": $('#otherWebServerDropDown').val()
             },
             //url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
+            url: "http://localhost/AdvWebProgFinal-master/BACKEND/api/v1/activity.php?getAll",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = '';
 
                 //loop through object
                 for(var key in JSONObject) {
+                    let i = 1;
+
                     if (JSONObject.hasOwnProperty(key)) {
                         activityHTML += '<a href="midterm.php?activity=';
-                        activityHTML += JSONObject[key]["id"] + '">';
-                        activityHTML += JSONObject[key]["name"] + '</a>';
+                        activityHTML += i + '">';
+                        activityHTML += JSONObject[key]["Name"] + '</a>';
                     }
                 }
 
