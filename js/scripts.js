@@ -13,15 +13,45 @@ function enlargeSidebar () {
     }
 }
 
-function sortActivities() {
+function displayOtherTeam(activityIsset, activityGet) {
+    $.ajax({
+        type: "GET",
+        data: {
+            "activityDisplay": $('#activityDisplay').val()
+        },
+        url: "http://64.72.2.230/AdvWebFinal/BACKEND/api/v1/activity.php?getAll",
+        dataType: "json",
+        success: function (JSONObject) {
+            var activityHTML = "";
 
+
+            //loop through object
+            for(var key in JSONObject) {
+                if (JSONObject.hasOwnProperty(key)) {
+
+                    if (activityIsset){
+                        if (JSONObject[key]["AttractionID"] == activityGet) {
+                            //activityHTML += '<p>' + JSONObject[key]["name"] + '</p>';
+                            activityHTML += '<div class="activity-box">';
+                            activityHTML += '<h2>' + JSONObject[key]["Name"] + '</h2>';
+                            activityHTML += ''; //image
+                            activityHTML += '<h3 style="background-color: white">Location: ' + JSONObject[key]["Address"] + ', ' + JSONObject[key]["City"] + ', ' + JSONObject[key]["Region"] + ', ' + JSONObject[key]["Postal"] + '</h3>';
+                            activityHTML += '<p style="background: white">' + JSONObject[key]["Description"] + '</p>';
+                            activityHTML += ''; //session button
+                            activityHTML += '</div>';
+                        }
+                    }
+                }
+            }
+
+            //insert activity into html
+            $('#activityDisplay').html(activityHTML);
+        }
+    });
 }
 
-function filterActivities() {
 
-}
-
-function displayActivity(activityIsset, activityGet) {
+function displayActivity(activityIsset, activityGet, otherTeamIsset) {
     //image ajax call
     var imageData = '';
     $.ajax({
@@ -87,6 +117,12 @@ function displayActivity(activityIsset, activityGet) {
             $('#activityDisplay').html(activityHTML);
         }
     });
+
+    //display other
+    // if(otherTeamIsset){
+    //     displayOtherTeam(activityIsset, activityGet);
+    // }
+
 }
 
 function getImages(url, activityID) {
@@ -173,7 +209,7 @@ $(function () {
             data: {
                 "ourWebServerDropDown": $('#ourWebServerDropDown').val()
             },
-            url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
+            url: "http://localhost/AdvWebFinal/webservice.php?Team=ourTeam&infoType=activity",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = "";
@@ -192,6 +228,7 @@ $(function () {
 
                         activityHTML += JSONObject[key]["id"] + '">';
                         activityHTML += JSONObject[key]["name"] + '</a>';
+
                     }
                 }
 
@@ -212,20 +249,27 @@ $(function () {
             data: {
                 "otherWebServerDropDown": $('#otherWebServerDropDown').val()
             },
-            //url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
-            url: "http://localhost/AdvWebProgFinal-master/BACKEND/api/v1/activity.php?getAll",
+            //url: "http://localhost/AdvWebProgFinal-master/BACKEND/api/v1/activity.php?getAll",
+            url: "http://64.72.2.230/AdvWebFinal/BACKEND/api/v1/activity.php?getAll",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = '';
+
+                JSONObject.sort(function(a, b) {
+                    if(a.Name < b.Name) { return -1; }
+                    if(a.Name > b.Name) { return 1; }
+                    return 0;
+                });
 
                 //loop through object
                 for(var key in JSONObject) {
                     let i = 1;
 
                     if (JSONObject.hasOwnProperty(key)) {
-                        activityHTML += '<a href="midterm.php?activity=';
-                        activityHTML += i++ + '">';
+                        activityHTML += '<a href="midterm.php?Team=otherTeam&activity=';
+                        activityHTML += (JSONObject[key]["AttractionID"]) + '">';
                         activityHTML += JSONObject[key]["Name"] + '</a>';
+                        //console.log(JSONObject);
                     }
                 }
 

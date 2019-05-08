@@ -25,34 +25,34 @@
             <button class="dropbtn"><a style="text-decoration:none; color: white" href="midterm.php">Home Page</a></button>
         </div>
 
-        <div class="dropdown">
-            <button class="dropbtn">Categories</button>
-            <div class="dropdown-content" style="left:0;">
-                <?php
-
-                foreach ($activities as $value) {
-                    if ($allTypes == NULL || !in_array($value->activityType, $allTypes)) {
-                        $allTypes[] = $value->activityType;
-                    }
-                }
-                foreach ($allTypes as $value) {
-                    echo '<a href="midterm.php?activityType=' . $value . '">' . $value . '</a>';
-                }
-                ?>
-            </div>
-
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Attractions</button>
-            <div class="dropdown-content" style="left:0;">
-                <?php
-                foreach ($alphabetical as $value) {
-                    echo '<a href="midterm.php?activity=' . $value->id . '">' . $value->name . '</a>';
-                }
-                ?>
-            </div>
-
-        </div>
+<!--        <div class="dropdown">-->
+<!--            <button class="dropbtn">Categories</button>-->
+<!--            <div class="dropdown-content" style="left:0;">-->
+<!--                --><?php
+//
+//                foreach ($activities as $value) {
+//                    if ($allTypes == NULL || !in_array($value->activityType, $allTypes)) {
+//                        $allTypes[] = $value->activityType;
+//                    }
+//                }
+//                foreach ($allTypes as $value) {
+//                    echo '<a href="midterm.php?activityType=' . $value . '">' . $value . '</a>';
+//                }
+//                ?>
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--        <div class="dropdown">-->
+<!--            <button class="dropbtn">Attractions</button>-->
+<!--            <div class="dropdown-content" style="left:0;">-->
+<!--                --><?php
+//                foreach ($alphabetical as $value) {
+//                    echo '<a href="midterm.php?activity=' . $value->id . '">' . $value->name . '</a>';
+//                }
+//                ?>
+<!--            </div>-->
+<!---->
+<!--        </div>-->
 
         <div class="dropdown">
             <button class="dropbtn" id="ourTeamActivityBtn">Activities from web service</button>

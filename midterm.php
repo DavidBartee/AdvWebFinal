@@ -66,10 +66,25 @@ $types = getTypes();
 
                 let activityIsset = '';
                 let activityGet = '';
+                let teamIsset = '';
+                let teamGet = '';
+
                 activityIsset = <?php echo (isset($_GET['activity']));?>;
                 activityGet = <?php echo $_GET['activity']; ?>;
+                teamIsset = <?php echo (isset($_GET['Team'])); ?>;
+                teamGet = <?php echo $_GET['Team']; ?>;
 
-                displayActivity(activityIsset, activityGet);
+                if (teamGet) {
+                    if (teamGet == 'ourTeam') {
+                        displayActivity(activityIsset, activityGet);
+                    }
+                    if (teamGet == 'otherTeam'){
+                        displayOtherTeam(activityIsset, activityGet);
+                    }
+                //other team display
+
+
+                //home page
 
                 //load activities
                 //activityArray = loadActivities();
