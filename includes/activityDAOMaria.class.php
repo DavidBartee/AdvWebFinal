@@ -73,5 +73,31 @@
             $statement = $this->pdo->prepare($sql);
             $statement->execute();
         }
+
+        public function updateImage ($object) {
+            $sql = 'UPDATE image SET
+                altText="' . $object->altText . '",
+                filePath="' . $object->filePath . '",
+                activityID="' . $object->activityID . '"
+                WHERE imageID = ' . $object->id;
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
+
+        public function createImage ($object) {
+            $sql = 'INSERT INTO image
+                        (altText, filePath, activityID)
+                        VALUES ("' . $object->altText . '", "' .
+                        $object->filePath . '", "' .
+                        $object->activityID . '")';
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
+
+        public function deleteImage ($id) {
+            $sql = 'DELETE FROM image WHERE imageID = ' . $id;
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        }
     }
 ?>
