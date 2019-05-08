@@ -48,7 +48,7 @@ $types = getTypes();
 <html lang="en">
 
 <head>
-    <title>Concord Attractions</title>
+    <title>Concord Attractionss</title>
     <link rel="stylesheet" href="css/styles.css">
 <!--    <link rel="stylesheet" href="css/bootstrap-4.3.1-dist/css/bootstrap.css"-->
     <script src="js/jquery-3.3.1.min.js"></script>
