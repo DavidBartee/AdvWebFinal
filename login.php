@@ -26,6 +26,7 @@
         }
             
         if ($count == 1) {
+            $_SESSION['loggedIn'] = true;
             header("location: management.php");
         } else {
             echo "Your login name or password is invalid";

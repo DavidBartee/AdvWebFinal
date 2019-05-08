@@ -5,6 +5,12 @@
     include_once('includes/activityDAO.class.php');
     include_once('includes/activityDAOMaria.class.php');
 
+    session_start();
+
+    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
+        header('Location: login.php');
+    }
+
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $actDAO = new ActivityDAOMaria($pdo);
