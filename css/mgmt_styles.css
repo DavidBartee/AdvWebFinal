@@ -8,11 +8,12 @@ div.readContainer {
     justify-content: center;
 }
 
-div.readActivity {
+div.readActivity, div.readImage {
     border: 1px solid grey;
     margin: 0;
     height: auto;
     width: 400px;
+    word-wrap: break-word;
 }
 
 div.readActivity h2, div.readActivity p, div.readActivity h3 {
@@ -26,11 +27,21 @@ div.readActivity h2 {
     color: white;
 }
 
-div.readActivity img {
-    max-height: 82%;
-    width: 100%;
+div.readImage img {
+    max-height: 80px;
+    max-width: 80px;
+    display: block;
 }
 
-div.readActivity form {
-    float: right;
+div.readImage h4, div.readImage p {
+    margin: 0;
+    padding: 4px;
+}
+
+textarea {
+    display: block;
+}
+
+.sectionHeader {
+    text-align: center;
 }
