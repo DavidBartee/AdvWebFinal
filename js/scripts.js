@@ -59,7 +59,7 @@ function displayActivity(activityIsset, activityGet, otherTeamIsset) {
         data: {
             "activityDisplay": $('#activityDisplay').val()
         },
-        url: "http://localhost/AdvWebFinal/webservice.php?infoType=image",
+        url: "webservice.php?infoType=image",
         dataType: "json",
         success: function (JSONObject) {
             var activityHTML = "";
@@ -85,7 +85,7 @@ function displayActivity(activityIsset, activityGet, otherTeamIsset) {
         data: {
             "activityDisplay": $('#activityDisplay').val()
         },
-        url: "http://localhost/AdvWebFinal/webservice.php?infoType=activity",
+        url: "webservice.php?infoType=activity",
         dataType: "json",
         success: function (JSONObject) {
             var activityHTML = "";
@@ -209,7 +209,7 @@ $(function () {
             data: {
                 "ourWebServerDropDown": $('#ourWebServerDropDown').val()
             },
-            url: "http://localhost/AdvWebFinal/webservice.php?Team=ourTeam&infoType=activity",
+            url: "webservice.php?infoType=activity",
             dataType: "json",
             success: function (JSONObject) {
                 var activityHTML = "";
@@ -224,7 +224,7 @@ $(function () {
                 //loop through object
                 for(var key in JSONObject) {
                     if (JSONObject.hasOwnProperty(key)) {
-                        activityHTML += '<a href="midterm.php?activity=';
+                        activityHTML += '<a href="midterm.php?Team=ourTeam&activity=';
 
                         activityHTML += JSONObject[key]["id"] + '">';
                         activityHTML += JSONObject[key]["name"] + '</a>';

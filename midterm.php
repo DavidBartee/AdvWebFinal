@@ -69,18 +69,39 @@ $types = getTypes();
                 let teamIsset = '';
                 let teamGet = '';
 
-                activityIsset = <?php echo (isset($_GET['activity']));?>;
-                activityGet = <?php echo $_GET['activity']; ?>;
-                teamIsset = <?php echo (isset($_GET['Team'])); ?>;
-                teamGet = <?php echo $_GET['Team']; ?>;
+                activityIsset = <?php
+                    $curActivity = "0";
+                    if(isset($_GET['activity'])) {
+                        echo "true";
+                        $curActivity = $_GET['activity'];
+                    }
+                    else {
+                        echo "false";
+                    }
+                ?>;
+                activityGet = <?php echo "'" . $curActivity . "'"; ?>;
 
-                if (teamGet) {
-                    if (teamGet == 'ourTeam') {
-                        displayActivity(activityIsset, activityGet);
-                    }
-                    if (teamGet == 'otherTeam'){
-                        displayOtherTeam(activityIsset, activityGet);
-                    }
+                teamIsset = <?php
+                $curTeam = "0";
+                if(isset($_GET['Team'])) {
+                    echo "true";
+                    $curTeam = $_GET['Team'];
+                }
+                else {
+                    echo "false";
+                }
+                ?>;
+                teamGet = <?php echo "'" . $curTeam . "'"; ?>;
+
+                if (teamIsset) {
+                   if (teamGet === 'ourTeam') {
+                       displayActivity(activityIsset, activityGet);
+                   }
+                   if (teamGet === 'otherTeam') {
+                       displayOtherTeam(activityIsset, activityGet);
+                   }
+                }
+                //displayActivity(activityIsset, activityGet);
                 //other team display
 
 
